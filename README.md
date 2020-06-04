@@ -11,4 +11,4 @@ Maximilian Beichter (maximilian.beichter@gmail.com)
 Anna Fedorchenko (anna.o.fedorchenko@gmail.com)  
 Dmytro Dehtyarov (dmytro.dehtyarov@gmail.com)  
   
-JAWS (Just Another Workspace Suite)
+JAWS (Just Another Workspace Suite), a data management tool for scientific data in HPC environments.
