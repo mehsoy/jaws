@@ -1,0 +1,9 @@
+delete from administrators;
+delete from project_managers;
+delete from workers;
+delete from workers_has_storages;
+delete from jobs;
+delete from storages;
+delete from managers_has_members;
+delete from users;
+delete from workspaces;
