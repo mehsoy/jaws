@@ -5,7 +5,7 @@ Babel==2.5.1
 cffi==1.11.4
 chardet==2.3.0
 click==6.7
-cryptography==2.1.4
+cryptography==3.2
 deprecated==1.1.0
 docutils==0.14
 Flask==0.12.2
