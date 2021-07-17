@@ -1,0 +1,19 @@
+[general]
+
+worker_name = 'worker1'
+worker_address = 'http://localhost:5003'
+master_address = 'http://localhost:5002'
+#values interpreted as milliseconds
+reconnect_timeout = 12000
+reconnect_frequency = 3000
+authentification_token = 'secret01'
+
+mountpoints = [
+  '/mnt/jaws/home',
+  '/mnt/jaws/centos127/',
+  '/mnt/jaws/dmd5/',
+  '/mnt/jaws/archive1/',
+]
+
+
+

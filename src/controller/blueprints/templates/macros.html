@@ -1,0 +1,94 @@
+{% macro workspace_table(workspaces) %}
+    <div id="workspaces">
+        <H1>Workspaces</H1>
+        <div>
+            <table id="workspaces_table" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>full_name</th>
+                    <th>username</th>
+                    <th>label</th>
+                    <th>counter</th>
+                    <th>Storage</th>
+                    <th>FreeText</th>
+                    <th>max_extensions</th>
+                    <th>times_extended</th>
+                    <th>time created</th>
+                    <th>expiration_date</th>
+                    <th>extension_intervall</th>
+                </tr>
+                </thead>
+                <tbody>
+                {%for ws in workspaces%}
+                <tr>
+                    <td>{{ ws['full_name'] }}</td>
+                    <td>{{ ws['username'] }}</td>
+                    <td>{{ ws['label'] }}</td>
+                    <td>{{ ws['counter'] }}</td>
+                    <td>{{ ws['storage'] }}</td>
+                    <td>{{ ws['freetext'] }}</td>
+                    <td>{{ ws['max_extensions'] }}</td>
+                    <td>{{ ws['times_extended'] }}</td>
+                    <td>{{ ws['time_created'] }}</td>
+                    <td>{{ ws['expiration_date'] }}</td>
+                    <td>{{ ws['days'] }}</td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        $(document).ready( function () {
+            $('#workspaces_table').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'columnsToggle'
+                ]
+            });
+        } );
+    </script>
+{% endmacro %}
+
+{% macro storage_table(storages) %}
+    <div id="storages">
+        <H1>Storages</H1>
+        <div>
+            <table id="storage_table" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>alias</th>
+                    <th>Description</th>
+                    <th>max_extension_period (days)</th>
+                    <th>max_extensions</th>
+                    <th>mountpoint</th>
+                </tr>
+                </thead>
+                <tbody>
+                {%for storage in storages%}
+                <tr>
+                    <td>{{ storage['alias'] }}</td>
+                    <td>{{ storage['description'] }}</td>
+                    <td>{{ storage['max_extension_period'] }}</td>
+                    <td>{{ storage['max_extensions'] }}</td>
+                    <td>{{ storage['mountpoint'] }}</td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        $(document).ready( function () {
+            $('#storage_table').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'columnsToggle'
+                ]
+            });
+        } );
+    </script>
+{% endmacro %}
+

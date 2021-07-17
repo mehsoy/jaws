@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+<!-- TODO this file should be renamed (also correct in base.html then) to dashboard or smth like that -->
+{% block body %}
+<div class="container" role="main">
+
+
+    <!-- div class="jumbotron">
+        <button type="button" class="btn btn-lg btn-success">Data Movement Deamon</button>
+        <p>Wilkommen im Userbereich des DMD. Hier finden sie eine Übersicht über ihre Jobs</p>
+    </div-->
+
+
+        <form action="" method="post" style="margin-bottom:30px">
+            <legend>Create a Job</legend>
+            <p>
+                <label><b>Workspace</b></label>
+                <input style="width:350px" type="text" placeholder="workspace name" name="workspace" required>
+
+                <label><b>Target</b></label>
+                <select name="target" required>
+                    {%for storage_name in storage_names%}
+                    <option value="{{ storage_name }}">{{ storage_name }}</option>
+                    {%endfor%}
+                </select>
+                <button type="submit">Submit</button>
+            </p>
+        </form>
+
+        <form action="" method="post">
+            <fieldset>
+                <legend>Delete a Job</legend>
+                <p>
+                    <label><b>Source</b></label>
+                    <input type="int" placeholder="Enter a job id" name="to_delete" required>
+                    <button type="submit">Submit</button>
+                </p>
+            </fieldset>
+        </form>
+
+        <div id="active_jobs">
+            <H1>Ihre laufenden Aufträge</H1>
+            <div>
+                <table id="active_jobs_table" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Quelle</th>
+                        <th>Ziel</th>
+                        <th>Start</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%for job in jobs%}
+                    <tr>
+                        <td>{{ job['job_id'] }}</td>
+                        <td>{{ job['source'] }}</td>
+                        <td>{{ job['target'] }}</td>
+                        <td>{{ job['enqueue_time'] }}</td>
+                        <td>{{ job['status'] }}</td>
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script>
+            $(document).ready( function () {
+                $('#active_jobs_table').DataTable();
+            } );
+        </script>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container" role="main">
+
+        <div id="finished_jobs">
+            <H1>Past Jobs</H1>
+            <div>
+                <table id="finished_jobs_table" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Source</th>
+                        <th>Target</th>
+                        <th>Enqueue Time</th>
+                        <th>Finish Time</th>
+                        <th>Creator</th>
+                        <th>Errors</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%for job in finished_jobs%}
+                    <tr>
+                        <td>{{ job['job_id'] }}</td>
+                        <td>{{ job['source'] }}</td>
+                        <td>{{ job['target'] }}</td>
+                        <td>{{ job['enqueue_time'] }}</td>
+                        <td>{{ job['end_time'] }}</td>
+                        <td>{{ job['creator'] }}</td>
+                        <td>{{ job['error'] }}</td>
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script>
+            $(document).ready( function () {
+                $('#finished_jobs_table').DataTable();
+            } );
+        </script>
+    </div>
+{% endblock %}

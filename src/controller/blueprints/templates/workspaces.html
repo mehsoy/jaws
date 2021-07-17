@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block body %}
+        <form action="" method="post" style="margin-bottom:30px">
+            <legend>Remove a Workspace</legend>
+            <p>
+                <label><b>Workspace</b></label>
+                <input style="width:350px" type="text" placeholder="workspace name" name="workspace_delete" required>
+                <button type="submit">Submit</button>
+            </p>
+        </form>
+    {% from 'macros.html' import workspace_table %}
+    {{ workspace_table(workspaces) }}
+{% endblock %}

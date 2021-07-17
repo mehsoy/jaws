@@ -1,14 +1,28 @@
-# JAWS    
-Just Another Workspace Suite  
-  
-This is only a placeholder. JAWS source code will be published soon.
-  
-Author: Mehmet Soysal (mehmet.soysal@kit.edu)  
-Johann Mantel (j-mantel@gmx.net)  
-Jakob Ohm (jakob.ohm@protonmail.com)  
-Adrian Beer (adrianbeer@fastmail.com)  
-Maximilian Beichter (maximilian.beichter@gmail.com)  
-Anna Fedorchenko (anna.o.fedorchenko@gmail.com)  
-Dmytro Dehtyarov (dmytro.dehtyarov@gmail.com)  
-  
-JAWS (Just Another Workspace Suite), a data management tool for scientific data in HPC environments.
+
+
+JAWS (Just Another Workspace Suite)
+==========
+(Old Name DataMovementDaemon)
+
+
+
+Installation
+------------
+
+Read SYSTEM_REQUIREMENTS.rst to make sure the host system is set up properly.
+
+
+Usage
+-----
+
+Read INSTRUCTION_MANUAL.rst to learn how to use this tool.
+
+
+Authors:\
+Mehmet Soysal (mehmet.soysal@kit.edu)\
+Johann Mantel\
+Jakob Ohm\
+Adrian Beer\
+Maximilian Beichter\
+Anna Fedorchenko\
+Dmytro Dehtyarov\

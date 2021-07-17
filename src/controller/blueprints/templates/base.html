@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Userbereich</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Load CSS & libraries -->
+    <link href="{{ url_for('static', filename='bootstrapmin/bootstrap.min.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', filename='jquery/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='Popper/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='bootstrapmin/bootstrap.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.colVis.min.js"></script>
+
+</head>
+<!-- Add extra padding to the body, otherwise navbar will hide content-->
+<body role="document" style="padding-top:180px">
+
+<!-- Fixierte Navbar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+         <div>
+            <img src="{{ url_for('static', filename='files/Jaws.png') }}" style="background-color:white;" class="bild" width="5%">
+         </div>
+    <div class="container">
+
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Navigation ein-/ausblenden</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="">JAWS</a>
+        </div>
+        <div id="navbar-session-info" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a>Logged in as: {{ request.cookies.get('username') }}</a></li>
+                <li><a href="{{ url_for('ns.logout') }}">Logout</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+                <div id="navbar-navigation" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url_for('ns.user') }}">Dashboard</a></li>
+                <li><a href="{{ url_for('ns.workspaces') }}">Workspaces</a></li>
+                <li><a href="{{ url_for('ns.storage_overview') }}">Storages</a></li>
+                <li><a href="{{ url_for('ns.past_jobs') }}">Past Jobs</a></li>
+                <li><a href="{{ url_for('ns.wip') }}">Statistics</a></li>
+
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+
+{% block body %}{% endblock %}
+
+</body>
+
+</html>

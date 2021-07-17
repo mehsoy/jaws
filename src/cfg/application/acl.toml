@@ -1,0 +1,7 @@
+[storages]
+# storages are never allowed to be modified by simple users
+Administrator=['alias', 'accept_jobs', 'max_extensions']
+
+[workspaces]
+User=['max_extensions', 'freetext','freetext2', 'dummy']
+Administrator=['max_extensions', 'times_extended']

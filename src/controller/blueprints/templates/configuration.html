@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block body %}
+ <div class="title">
+ {% for item in configuration %}
+     <span>{{ item.title }}</span>
+ {% endfor %}
+ </div>
+{% endblock %}

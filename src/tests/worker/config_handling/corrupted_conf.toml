@@ -1,0 +1,77 @@
+[general]
+
+worker_name = 'worker1'
+worker_address = 'http://193.196.36.173:5003'
+master_address = 'http://193.196.36.173:5002'
+#values interpreted as milliseconds
+reconnect_timeout = 12000
+reconnect_frequency = 3000
+authentification_token = 1
+
+#
+# Warning: The following configurations should not be modified
+# after deployment to e.g. ensure consistent file formats.
+# Violating this rule may result in consequences including the
+# inablity to move files from or to the modified storage. Note
+# that the 'type' DETERMINES the family of copy tools used.
+#
+
+[dmd_home]
+type = 'posix'
+online = false
+is_archive = false
+alias = 'dmd_home'
+mountpoint = '/'
+naming_convention = '<username>-<alias>-<number>'
+
+  [dmd_home.copytool]
+  copytool = 'rsync'
+  retrycount = 0
+  copytool_options = '-asv --inplace'
+
+
+[centos]
+type = 'posix'
+online = false
+is_archive = false
+alias = 'centos'
+mountpoint = '/mount/centos127'
+naming_convention = '<username>-<alias>-<number>'
+
+  [centos.copytool]
+  copytool = 'rsync'
+  retrycount = 0
+  copytool_options = '-asv --inplace'
+
+
+[dmd5]
+type = 'posix'
+online = false
+is_archive = false
+alias = 'dmd5'
+mountpoint = '/mount/dmd5'
+naming_convention = '<alias>-<username>-<number>'
+
+  [dmd5.copytool]
+  copytool = 'rsync'
+  retrycount = 1
+  copytool_options = '-asv --inplace'
+
+
+[archive1]
+type = 'archive'
+online = false
+is_archive = true
+alias = 'archive1'
+mountpoint = '/mount/archive1'
+naming_convention = '<username>-<alias>-<number>'
+
+  [archive1.copytool]
+  copytool = 'tar'
+  retrycount = 0
+  format = 'posix'
+  gzip = true
+  preserve-permissions = true
+  no-ignore-command-error = true
+
+

@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container" role="main">
+
+        <div>
+            <H1>Running Jobs</H1>
+            <div>
+                <table id="running_jobs_table" class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Quelle</th>
+                        <th>Ziel</th>
+                        <th>Start</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {%for job in jobs%}
+                    <tr>
+                        <td>{{ job['job_id'] }}</td>
+                        <td>{{ job['source'] }}</td>
+                        <td>{{ job['target'] }}</td>
+                        <td>{{ job['enqueue_time'] }}</td>
+                        <td>{{ job['status'] }}</td>
+                    </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <br>
+        <H1>Queued Jobs</H1>
+        <div >
+            <table id="waiting_queue_jobs_table" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Quelle</th>
+                    <th>Ziel</th>
+                    <th>Start</th>
+                    <th>Status</th>
+                    <th>Priorität</th>
+                    <th>Nutzer</th>
+                </tr>
+                </thead>
+                <tbody>
+                {%for queuejob in jobs_queue%}
+                    <tr>
+                        <td>{{ queuejob['job_id'] }}</td>
+                        <td>{{ queuejob['source'] }}</td>
+                        <td>{{ queuejob['target'] }}</td>
+                        <td>{{ queuejob['enqueue_time'] }}</td>
+                        <td>{{ queuejob['status'] }}</td>
+                        <td>{{ queuejob['priority'] }}</td>
+                        <td>{{ queuejob['creator'] }}</td>
+                    </tr>
+                {% endfor %}
+
+
+                </tbody>
+            </table>
+        </div>
+
+
+        <br>
+        <H1>Workers Overview</H1>
+        <div >
+            <table id="workers_overview_table" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Worker-ID</th>
+                    <th>Worker-Name</th>
+                    <th>Address</th>
+                    <th>Status</th>
+                    <th>Job</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {%for worker in workers%}
+                        <tr>
+
+                        <td>{{ worker['worker_id'] }}</td>
+                        <td>{{ worker['worker_name'] }}</td>
+                        <td>{{ worker['address'] }}</td>
+                        <td>{{ worker['status'] }}</td>
+                        {% if 'job' in worker %}
+                            <td>{{ worker['job']['id']}}   {{worker['job']['target']}}</td>
+                        {% else %}
+                            <td> - </td>
+                        {% endif%}
+                        </tr>
+                    {% endfor %}
+
+
+                </tbody>
+            </table>
+        </div>
+        <script>
+            $(document).ready( function () {
+                $('#workers_overview_table').DataTable();
+                $('#waiting_queue_jobs_table').DataTable();
+                $('#running_jobs_table').DataTable();
+            } );
+        </script>
+
+        {% from 'macros.html' import workspace_table %}
+        {{ workspace_table(workspaces) }}
+
+        <!--This block enables the server to push messages to the client, but is currently not in use. -->
+
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>-->
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>-->
+        <!--<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>-->
+        <!--<script type="text/javascript" charset="utf-8">-->
+            <!--var socket;-->
+            <!--$(document).ready(function(){-->
+                <!--socket = io.connect('http://' + document.domain + ':' + location.port + '/web/admin/dashboard');-->
+                <!--socket.on( 'connect', function() {-->
+                    <!--socket.emit('client_connected', {data: 'I\'m connected!'})-->
+                <!--})-->
+                <!--socket.on('worker_update', function(data) {-->
+                    <!--document.getElementById("test").innerHTML = "worker_update was called!";-->
+                <!--});-->
+            <!--});-->
+        <!--</script>-->
+</div>
+{% endblock %}

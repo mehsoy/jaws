@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    {% from 'macros.html' import storage_table %}
+    {{ storage_table(storages) }}
+
+{% endblock %}
