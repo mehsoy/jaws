@@ -1,6 +1,0 @@
-[console_scripts]
-dmdcontroller = controller.__main__:main
-dmdsearch = search.__main__:main
-dmdworker = worker.__main__:main
-jaws = views.__main__:main
-
